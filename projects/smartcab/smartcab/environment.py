@@ -232,6 +232,7 @@ class Environment(object):
                 if state['deadline'] >= 0:
                     reward += 10  # bonus
                     self.trial_data['success'] = 1
+                    agent.targetReachedCount += 1
                 self.done = True
                 print "Environment.act(): Primary agent has reached destination!"  # [debug]
             self.status_text = "state: {}\naction: {}\nreward: {}".format(agent.get_state(), action, reward)
@@ -245,7 +246,7 @@ class Environment(object):
             self.step_data['action'] = action
             self.step_data['reward'] = reward
             self.trial_data['net_reward'] += reward
-            print "Environment.act(): Step data: {}".format(self.step_data)  # [debug]
+            #print "Environment.act(): Step data: {}".format(self.step_data)  # [debug]
 
         return reward
 
